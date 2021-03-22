@@ -1,8 +1,0 @@
-function IM_print(im)
-    [n, m] = size(im);
-    fprintf('Incidence matrix:\n');
-    for i = 1:n
-        fprintf('%d ', im(i));
-        fprintf('\n');
-    end
-end
