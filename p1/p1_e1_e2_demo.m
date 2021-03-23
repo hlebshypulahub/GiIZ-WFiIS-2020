@@ -7,20 +7,24 @@ input_type = input(strcat('Proszę podać typ struktury wejściowej\n',...
 
 file_path = input('\nProszę podać ścieżkę do pliku z strukturą: \n');
 
+file_path_demo = "C:\Users\hlebs\Desktop\SEMESTR 6\GRAFY\LABS\p1\al_test.dat";
+
 if input_type == 1
-    al_string = fileread(file_path);
+    al_string = fileread(file_path_demo);
     al_lines = regexp(al_string, '\n', 'split').';
     al = cell(size(al_lines));
     for i = 1:size(al_lines)
         al{i} = str2num(al_lines{i});
     end
 
-    im_out = AL_to_IM(al);
-    am_out = AL_to_AM(al);
+    im = AL_to_IM(al);
+    am = AL_to_AM(al);
 
     AL_print(al);
-    IM_print(im_out);
-    AM_print(am_out);
+    IM_print(im);
+    AM_print(am);
+    g = graph(am);
+    draw_circle_graph(g);
     return;
 elseif input_type == 2
     am = readmatrix(file_path);
@@ -29,6 +33,7 @@ elseif input_type == 2
 
     AM_print(am);
     AL_print(al);
+    draw_circle_graph(am);
     return;
 elseif input_type == 3
     im = readmatrix('im_test.dat');
