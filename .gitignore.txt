@@ -1,1 +1,2 @@
 /p1/*.asv
+/p1/script_for_tests.m
