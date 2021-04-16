@@ -16,20 +16,3 @@ function am  = AL_to_AM(al)
        end
     end
 end
-
-
-
-% function out  = convert_LS_to_MS(list)
-%     n = size(list);
-%     temp = zeros(n(1),n(1));
-%     
-%     for i = 1:n(1)
-%        for j = 1:n(2)
-%            if list(i,j) > 0
-%                idx = list(i,j);
-%                temp(i,idx) = 1;
-%            end
-%        end
-%     end
-%    out = temp;
-% end

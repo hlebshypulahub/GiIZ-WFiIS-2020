@@ -18,7 +18,11 @@ function g = build_randon_graph_by_edges(n, l)
     %%% Losujemy tak naprawdę kolejne miejsca na te jedynki poniżej
     %%% przekątnej. Jak mamy comb miejsc, to mamy na te comb miejsc
     %%% wylosować l krawędzi bez powtórzeń.
-    perm_vector = randperm(comb, l);
+    if l <= comb
+        perm_vector = randperm(comb, l);
+    else
+        error('Too large amount of edges: must be less than or equal to %d;', comb); 
+    end
     
     %%% Index tempowy oznacza aktualne miejsce (na którym stoimy)
     %%%  w macierzy poniżej przekątnej

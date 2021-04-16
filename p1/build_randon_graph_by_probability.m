@@ -1,5 +1,9 @@
 function g = build_randon_graph_by_probability(n, p)
-    am = zeros(n, n);
+    if(p < 0 || p > 1)
+       error('Probability must be in the range [0, 1], but You typed %d;', p); 
+    end
+
+    am = zeros(n);
     
     %%% Idziemy poniżej przekątnej,
     %%% jeżeli rand() <= prawdopodobieństwa, to wstawiamy jedynkę
