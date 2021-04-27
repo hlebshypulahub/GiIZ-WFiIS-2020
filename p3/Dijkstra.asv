@@ -1,0 +1,53 @@
+function Dijkstra(g, s)
+
+    %%% Bierzemy macierz sąsiedztwa
+    am = full(adjacency(g, 'weighted'));
+    al = AM_to_AL(am);
+
+    %%% Ilość wierzchołków
+    n = size(am, 1);
+    
+    %%% Tabela oszacowanych wag najkrótszej ścieżki od wierzchołka s do v
+    d = Inf(n, 1);
+    d(s) = 0;
+    
+    %%% Tabela poprzedników wierzchołka v w najkrótszej ścieżce z s do v
+    p = null(n, 1);
+    
+    %%% Zbiór “gotowych” wierzchołków (początkowo jest pusty)
+    S = [];
+    
+    count = 0;
+    while size(unique(S), 1) ~= n && count < 5
+        
+        d
+        
+        
+        
+        %%%  Wierzchołek o najmniejszym d(u) spośród niegotowych wierzchołków: u ~∈ S
+%         [u, ~] = find((d == min(d)) & (~ismember(find(d == min(d)), S)))
+%         temp = d .* M
+%         [u, ~] = find(temp == min(temp));
+%         M(u, 1) = 0;
+        for i = 1:size(d, 1)
+           if ~ismember(i, S)
+               temp(end + 1, 1) = d(i);
+               temp(end + 1, 2) = i;
+           end
+        end
+        [u, ~] = find(temp == min(temp));
+        
+        
+        S = union(u, S)
+
+        for i = 1:size(al{u}, 2)
+           if ~any(S == al{u}(i))
+               if d(al{u}(i)) > d(u) + am(u, al{u}(i))
+                   d(al{u}(i)) = d(u) + am(u, al{u}(i));
+                   p(al{u}(i)) = u;
+               end
+           end
+        end
+        count = count + 1;
+    end
+end
