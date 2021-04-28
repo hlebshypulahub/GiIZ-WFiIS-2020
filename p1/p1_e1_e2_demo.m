@@ -45,4 +45,3 @@ else
     error('Unrecognized option "%s";', input_type);
 end
 end
-
