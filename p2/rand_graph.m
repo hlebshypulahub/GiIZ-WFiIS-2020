@@ -1,4 +1,4 @@
-%%% Zamienia krawędzi ab i cd na ad i bc ranpomowo k razy
+%%% Zamienia krawędzi ab i cd na ad i bc randomowo k razy
 function g_out = rand_graph(g_in, k)
     %%% Dostajemy macierz incydencji
     am = full(adjacency(g_in));

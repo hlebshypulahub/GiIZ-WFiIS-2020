@@ -36,5 +36,5 @@ function draw_circle_graph(g)
 
     h.NodeLabel = {};
     
-    set(gcf,'position',[100, 100 , 800, 760])
+    set(gcf,'position',[10, 50, 800, 760])
 end

@@ -58,5 +58,5 @@ for i = 1:n
     hold on;
 end
 
-set(gcf, 'position', [1500, 400, 800, 760])
+set(gcf, 'position', [10, 50, 800, 760])
 end

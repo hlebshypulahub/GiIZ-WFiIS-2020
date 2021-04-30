@@ -74,5 +74,5 @@ function draw_circle_graph_with_components(g, comp, largest)
     %%% Usuwa stare numery
     h.NodeLabel = {};
     
-    set(gcf,'position',[100, 100 , 800, 760])
+    set(gcf,'Position',[10, 50, 800, 760])
 end
