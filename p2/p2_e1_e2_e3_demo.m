@@ -1,4 +1,4 @@
-function p2_e1_e2__e3_demo(structure_path, k)
+function p2_e1_e2_e3_demo(structure_path, k)
         clc;
         seq = dlmread(structure_path);
         if is_degree_seq(seq)
