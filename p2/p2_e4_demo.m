@@ -3,7 +3,7 @@
 function p2_e4_demo(n)
 
     if str2double(n) < 3
-        disp('Enter a number greater than 2');
+        error('Enter a number greater than 2');
     else
         g = create_eulerian_graph(n);
 
@@ -16,5 +16,6 @@ function p2_e4_demo(n)
             fprintf('%d - ', cycle(i));
         end
         fprintf('%d]', cycle(size_cycle));
+        fprintf('\n');
     end
 end
