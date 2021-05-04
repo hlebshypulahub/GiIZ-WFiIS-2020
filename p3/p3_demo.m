@@ -1,4 +1,4 @@
-function p3_e1_e2_demo(nodes, edges, start)
+function p3_demo(nodes, edges, start)
 
     nodes = str2num(nodes);
     edges = str2num(edges);
