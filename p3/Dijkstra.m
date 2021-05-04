@@ -1,4 +1,4 @@
-function Dijkstra(g, s)
+function d = Dijkstra(g, s, flag)
 
 %%% Bierzemy macierz sąsiedztwa
 am = full(adjacency(g, 'weighted'));
@@ -35,7 +35,7 @@ while size(unique(S), 1) ~= n
     [i, ~] = find(temp(:, 1) == min(temp(:, 1)));
     u = temp(i(1), 2);
 
-    %%% Jeśli doszedło do wartownika, to koniec pętli
+    %%% Jeśli doszło do wartownika, to koniec pętli
     if u == Inf
         break;
     end
@@ -55,6 +55,8 @@ while size(unique(S), 1) ~= n
     end
 end
 
-print_shortest_path(d, p, s);
+if flag == 1
+    print_shortest_path(d, p, s);
+end
 
 end
