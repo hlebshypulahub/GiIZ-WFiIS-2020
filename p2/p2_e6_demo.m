@@ -1,5 +1,4 @@
-%%% n - ilość wierzchołków podana jako argument
-
+%%% jako argument ciąg graficzny
 function p2_e6_demo(seq)
 
     if is_degree_seq(seq)
