@@ -18,8 +18,6 @@ function p3_demo(nodes, edges, start)
 
     g = set_weights(g, 1, 10);
 
-    draw_weighted_graph(g);
-
     %%% 1 przekazuję gdy chcę wypisać listę z zadania 2 dla podanego 
     %%% wierzchołka startowego
     Dijkstra(g, start, 1);
@@ -56,7 +54,7 @@ function p3_demo(nodes, edges, start)
 
     fprintf('Center of graph:');
     disp(center_of_graph);
-    fprintf('Sum of distances:\t%d\n',min_sum);
+    fprintf('Sum of distances:\t%d',min_sum);
 
     %%% centrum minimax ”to wierzchołek, którego odległość 
     %%% do najdalszego wierzchołka jest minimalna“
@@ -88,8 +86,7 @@ function p3_demo(nodes, edges, start)
     
     %%% minimalne drzewo rozpinające
     %%% algorytm prima
+    tree_g = prim(g);
     
-    prim(g);
-    
-    
+    draw_weighted_graph_tree(g, tree_g);
 end
