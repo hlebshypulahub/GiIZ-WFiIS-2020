@@ -89,7 +89,5 @@ function p3_demo(nodes, edges, start)
     %%% minimalne drzewo rozpinające
     %%% algorytm prima
     
-    prim(g);
-    
     
 end
