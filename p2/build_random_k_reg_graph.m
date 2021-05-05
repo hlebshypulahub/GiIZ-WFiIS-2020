@@ -18,4 +18,3 @@ else
     error("Nie można zbudować grafu k-regularnego dla danej liczby wierchołków")
     
 end
-

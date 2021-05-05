@@ -1,6 +1,7 @@
 function p2_e1_e2_e3_demo(structure_path, k)
         clc;
         seq = dlmread(structure_path);
+        
         if is_degree_seq(seq)
             DS_print(seq);
             al = DS_to_AL(seq);
