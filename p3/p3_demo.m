@@ -1,5 +1,5 @@
 function p3_demo(nodes, edges, start)
-
+    clc;
     nodes = str2num(nodes);
     edges = str2num(edges);
     start = str2num(start);
@@ -16,6 +16,7 @@ function p3_demo(nodes, edges, start)
         error('Connectivity unreachable, try other input arguments;');
     end
 
+    %%% generuję spójny graf losowy
     g = set_weights(g, 1, 10);
 
     %%% 1 przekazuję gdy chcę wypisać listę z zadania 2 dla podanego 
