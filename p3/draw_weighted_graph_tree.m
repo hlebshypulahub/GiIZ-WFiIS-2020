@@ -1,9 +1,9 @@
-function draw_weighted_graph_tree(g, tree_g)
+function fig = draw_weighted_graph_tree(g, tree_g)
     [n, ~] = size(g.Nodes);
     
-    LWidths = 6*g.Edges.Weight/max(g.Edges.Weight);
+    LWidths = 10*g.Edges.Weight/max(g.Edges.Weight);
     h = plot(g, 'LineWidth', LWidths, 'EdgeLabel', g.Edges.Weight,...
-    'EdgeColor', [200 200 200]/255, 'MarkerSize', 20, 'Layout', 'auto',...
+    'EdgeColor', [220 220 220]/255, 'MarkerSize', 20, 'Layout', 'layered',...
     'NodeColor', [255 150 255]/255);
     hold on;
     
@@ -23,4 +23,5 @@ function draw_weighted_graph_tree(g, tree_g)
     h.NodeLabel = {};
     
     set(gcf,'position',[100, 100 , 800, 760]);
+    fig = gcf;
 end

@@ -1,6 +1,7 @@
 function p2_e1_e2_e3_demo(structure_path, k)
         clc;
         seq = dlmread(structure_path);
+        k = str2double(k);
         
         if is_degree_seq(seq)
             DS_print(seq);
@@ -8,13 +9,17 @@ function p2_e1_e2_e3_demo(structure_path, k)
             am = AL_to_AM(al);
             
             g = graph(am);
-            g = rand_graph(g, str2double(k));
+            g = rand_graph(g, k);
             
             comp = components(g);
             
-            largest = components_print(comp);
+            largest = largest_component(comp);
             
-            draw_circle_graph_with_components(g, comp, largest);
+            components_print(comp);
+            
+            fig = draw_circle_graph_with_components(g, comp, largest);
+            
+            saveas(fig, sprintf('p2_e1_e2_e3_demo(%s, %d).png', structure_path, k)); 
         else
             disp('Ciąg');
             fprintf('%d ', seq(1, 1:size(seq, 2)));

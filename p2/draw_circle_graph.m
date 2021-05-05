@@ -1,4 +1,4 @@
-function draw_circle_graph(g)
+function fig = draw_circle_graph(g)
     [n, ~] = size(g.Nodes);
     
     step = (2 * pi) / n;
@@ -26,15 +26,17 @@ function draw_circle_graph(g)
     hold on;
     
     for i = 1:n
-        plot(h.XData(i),h.YData(i), 'o', 'MarkerEdgeColor', 'k', 'MarkerSize', 20)
+        plot(h.XData(i),h.YData(i), 'o', 'MarkerEdgeColor', 'k', 'MarkerSize', 20);
     end
         
     text(h.XData, h.YData, h.NodeLabel,...
     'VerticalAlignment','Middle',...
     'HorizontalAlignment', 'Center',...
-    'FontSize', 12)
+    'FontSize', 12);
 
     h.NodeLabel = {};
     
-    set(gcf,'position',[10, 50, 800, 760])
+    set(gcf,'position',[10, 50, 800, 760]);
+    
+    fig = gcf;
 end

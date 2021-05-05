@@ -1,4 +1,4 @@
-function draw_weighted_graph(g)
+function fig = draw_weighted_graph(g)
     [n, ~] = size(g.Nodes);
     
     LWidths = 5*g.Edges.Weight/max(g.Edges.Weight);
@@ -21,4 +21,6 @@ function draw_weighted_graph(g)
     h.NodeLabel = {};
     
     set(gcf,'position',[100, 100 , 800, 760])
+    
+    fig = gcf;
 end

@@ -1,4 +1,4 @@
-function draw_circle_graph_with_components(g, comp, largest)
+function fig = draw_circle_graph_with_components(g, comp, largest)
     [n, ~] = size(g.Nodes);
     
     step = (2 * pi) / n;
@@ -74,5 +74,7 @@ function draw_circle_graph_with_components(g, comp, largest)
     %%% Usuwa stare numery
     h.NodeLabel = {};
     
-    set(gcf,'Position',[10, 50, 800, 760])
+    set(gcf,'Position',[10, 50, 800, 760]);
+    
+    fig = gcf;
 end

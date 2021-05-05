@@ -6,7 +6,8 @@ function p2_e6_demo(structure_path)
          g = AL_to_AM(DS_to_AL(seq));
          hamilton(g);
          g=graph(g);
-         draw_circle_graph(g);
+         fig = draw_circle_graph(g);
+         saveas(fig, sprintf('p2_e6_demo(%s).png', structure_path));
     else
         error("Zła sekwencja")
     end

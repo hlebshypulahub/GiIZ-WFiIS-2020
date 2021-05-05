@@ -14,8 +14,8 @@ function g = create_eulerian_graph(n)
                 %%% losowa sekwencja liczb naturalnych parzystych
                 %%% z przedziału <2,8> (nie z przedziału 
                 %%% <0, 8> aby była jedna spójna składowa)
-                seq = randi(8, 1, str2double(n));
-                for i = 1:str2double(n)
+                seq = randi(8, 1, n);
+                for i = 1:n
                     if mod(seq(i),2) == 1
                         seq(i) = seq(i) + 1;
                     end
@@ -30,9 +30,7 @@ function g = create_eulerian_graph(n)
                     al = DS_to_AL(seq);
                     am = AL_to_AM(al);
 
-                    g = graph(am);
-
-                    draw_circle_graph(g);           
+                    g = graph(am);           
 
                     %%% gdy znaleziono graf eulerowski, zakończ
                     %%% szukanie - wyjście z pętli

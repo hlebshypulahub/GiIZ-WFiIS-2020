@@ -43,7 +43,7 @@ if c==o
         disp(stack)
     end
 else
-    disp("Graf musi być spójny!")
+    error("Graf musi być spójny!")
 end
 
 %%przeszukujemy graf w głąb rekurencyjnie
