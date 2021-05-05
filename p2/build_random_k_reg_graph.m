@@ -6,11 +6,13 @@ if k>=n
 end
 
 if is_degree_seq(a)
-    al = DS_to_AL(a)
-    am = AL_to_AM(al)
-    g=graph(am)
-    g = rand_graph(g,k)
+    al = DS_to_AL(a);
+    am = AL_to_AM(al);
+    g=graph(am);
+    g = rand_graph(g,k);
+    draw_circle_graph(g);
 else
     error("Nie można zbudować grafu k-regularnego dla danej liczby wierchołków")
+    
 end
 
