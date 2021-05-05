@@ -86,7 +86,7 @@ function p3_demo(nodes, edges, start)
     
     %%% minimalne drzewo rozpinające
     %%% algorytm prima
-    tree_g = prim(g);
+    treeprim(g);
     
-    draw_weighted_graph_tree(g, tree_g);
+    draw_weighted_graph_tree(g);
 end
