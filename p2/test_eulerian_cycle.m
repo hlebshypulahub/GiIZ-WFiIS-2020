@@ -2,7 +2,8 @@
 function test_eulerian_cycle()
     close all;
     
-    %%% macierz która ma dwie spójne składowe połączone dwoma mostami
+    %%% macierz sąsiedztwa grafu, który ma dwie spójne składowe 
+    %%% połączone dwoma mostami (graf jest eulerowski)
     am=readmatrix('am.dat');
     g=graph(am);
         
