@@ -1,4 +1,5 @@
 function p3_demo(nodes, edges, start)
+    close all;
     clc;
     nodes = str2num(nodes);
     edges = str2num(edges);

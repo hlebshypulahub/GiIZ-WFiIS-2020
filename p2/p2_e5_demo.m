@@ -1,7 +1,7 @@
 %%% n - ilość wierzchołków podana jako argument
 
 function p2_e5_demo(n, k)
-
+    close all;
     n = str2num(n);
     k = str2num(k);
 

@@ -1,6 +1,7 @@
 %%% n - ilość wierzchołków podana jako argument
 
 function p2_e4_demo(n)
+    close all;
     n = str2double(n);
 
     if n < 3

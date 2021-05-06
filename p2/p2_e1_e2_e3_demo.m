@@ -1,4 +1,5 @@
 function p2_e1_e2_e3_demo(structure_path, k)
+        close all;
         clc;
         seq = dlmread(structure_path);
         k = str2double(k);

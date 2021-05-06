@@ -1,6 +1,7 @@
 %%% jako argument ciąg graficzny
 
 function p2_e6_demo(structure_path)
+    close all;
     seq = dlmread(structure_path);
     if is_degree_seq(seq)
          g = AL_to_AM(DS_to_AL(seq));
