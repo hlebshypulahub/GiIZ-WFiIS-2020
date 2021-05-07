@@ -7,7 +7,7 @@ if strcmp(input_type, '--al')
     for i = 1:size(al_lines)
         al{i} = str2num(al_lines{i});
     end
-
+    
     im = AL_to_IM(al);
     am = AL_to_AM(al);
 
@@ -18,7 +18,7 @@ if strcmp(input_type, '--al')
     draw_circle_graph(g);
     return;
 elseif strcmp(input_type, '--am')
-    am = readmatrix(structure_path);
+    am = dlmread(structure_path);
 
     al = AM_to_AL(am);
     im = AM_to_IM(am);
@@ -30,7 +30,7 @@ elseif strcmp(input_type, '--am')
     draw_circle_graph(g);
     return;
 elseif strcmp(input_type, '--im')
-    im = readmatrix(structure_path);
+    im = dlmread(structure_path);
 
     al = IM_to_AL(im);
     am = IM_to_AM(im);

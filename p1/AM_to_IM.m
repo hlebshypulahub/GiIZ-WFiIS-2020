@@ -1,4 +1,8 @@
 function im  = AM_to_IM(am)
+    if diff(size(am)) || trace(am) ~= 0 || ~issymmetric(am)
+        error('Invalid adjacency matrix - the matrix is not a symmetric hollow matrix.');
+    end
+
     n = size(am);
     e = 0;
     

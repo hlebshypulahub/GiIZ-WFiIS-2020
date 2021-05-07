@@ -1,0 +1,7 @@
+function al = AM_to_AL(am)
+    if size(am, 1) ~= size(am, 2)
+        ||
+        error('Invalid adjacency matrix - ');
+    end
+    al = cellfun(@(x) find(x), num2cell(am, 2), 'UniformOutput', false);
+end

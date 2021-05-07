@@ -2,6 +2,16 @@ function am  = AL_to_AM(al)
     [n, ~] = size(al);
     am = zeros(n);
     
+    m = 0;
+    for i = 1:n
+        [~, m_temp] = size(al{i});
+        m = m + m_temp;
+    end
+    %%% Sprawdzamy, że suma stopni jest parzysta
+    if mod(m, 2) == 1
+        error('Invalid adjacency list - sum of vertices degrees is not even.');
+    end
+    
     for i = 1:n
         [~, m_temp] = size(al{i});
         for j = 1:m_temp

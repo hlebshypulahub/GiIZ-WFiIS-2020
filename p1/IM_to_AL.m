@@ -5,9 +5,12 @@ function al = IM_to_AL(im)
         error('Matrix must contain only {0,1}');    
     end
     
-    %%% Sprawdza, że każda krawędź ma być połączona z co najmniej jednym węzłem
-    if ~all(any(im.', 2))
-        error('Invalid incidence matrix - each edge must be connected to at least one node.');
+    %%% Sprawdza, że każda krawędź ma być połączona z dokładnie dwoma
+    %%% wierzchołkami
+    for i = 1:size(im, 2)
+        if nnz(im(:, i)) ~= 2
+            error('Invalid incidence matrix - each edge must be connected to two nodes.');
+        end
     end
     
     %%% Konwertujemy wierszy macierzy do komórki, szukamy w wierszu 1 i
