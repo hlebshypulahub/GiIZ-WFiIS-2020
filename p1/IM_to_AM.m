@@ -1,6 +1,14 @@
 function am = IM_to_AM(im)
 n = size(im);
 
+    %%% Sprawdza, że każda krawędź ma być połączona z dokładnie dwoma
+    %%% wierzchołkami
+    for i = 1:size(im, 2)
+        if nnz(im(:, i)) ~= 2
+            error('Invalid incidence matrix - each edge must be connected to two nodes.');
+        end
+    end
+
 am = zeros(n(1), n(1));
 
 for j = 1:n(2)

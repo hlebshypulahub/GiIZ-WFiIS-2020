@@ -1,6 +1,6 @@
 %%% jako argument ciąg graficzny
 
-function p2_e6_demo(structure_path)
+function p2_e6_demo(structure_path, output_img_name)
     close all;
     seq = dlmread(structure_path);
     if is_degree_seq(seq)
@@ -8,8 +8,13 @@ function p2_e6_demo(structure_path)
          hamilton(g);
          g=graph(g);
          fig = draw_circle_graph(g);
-         saveas(fig, sprintf('p2_e6_demo(%s).png', structure_path));
+         
+         if ~exist('output_img_name', 'var')
+             saveas(fig, sprintf('p2_e6_demo(%s).png', structure_path));
+         else
+             saveas(fig, output_img_name);
+         end
     else
-        error("Zła sekwencja")
+        error("Invalid sequence.")
     end
 end

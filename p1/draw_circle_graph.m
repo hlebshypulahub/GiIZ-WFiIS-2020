@@ -1,4 +1,4 @@
-function draw_circle_graph(g)
+function fig =  draw_circle_graph(g)
 [n, ~] = size(g.Nodes);
 
 step = (2 * pi) / n;
@@ -58,5 +58,7 @@ for i = 1:n
     hold on;
 end
 
-set(gcf, 'position', [10, 50, 800, 760])
+set(gcf, 'position', [10, 50, 800, 760]);
+
+fig = gcf;
 end

@@ -1,4 +1,5 @@
 function p1_e1_e2_demo(input_type, structure_path)
+close all;
 
 if strcmp(input_type, '--al')
     al_string = fileread(structure_path);
@@ -15,7 +16,8 @@ if strcmp(input_type, '--al')
     IM_print(im);
     AM_print(am);
     g = graph(am);
-    draw_circle_graph(g);
+    fig = draw_circle_graph(g);
+    saveas(fig, sprintf('p1_e1_e2_demo(%s, %s).png', input_type, structure_path));
     return;
 elseif strcmp(input_type, '--am')
     am = dlmread(structure_path);
@@ -27,7 +29,8 @@ elseif strcmp(input_type, '--am')
     AL_print(al);
     IM_print(im);
     g = graph(am);
-    draw_circle_graph(g);
+    fig = draw_circle_graph(g);
+    saveas(fig, sprintf('p1_e1_e2_demo(%s, %s).png', input_type, structure_path));
     return;
 elseif strcmp(input_type, '--im')
     im = dlmread(structure_path);
@@ -39,7 +42,8 @@ elseif strcmp(input_type, '--im')
     AL_print(al);
     AM_print(am);
     g = graph(am);
-    draw_circle_graph(g);
+    fig = draw_circle_graph(g);
+    saveas(fig, sprintf('p1_e1_e2_demo(%s, %s).png', input_type, structure_path));
     return;
 else
     error('Unrecognized option "%s";', input_type);

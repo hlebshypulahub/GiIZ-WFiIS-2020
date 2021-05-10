@@ -1,4 +1,4 @@
-function p2_e1_e2_e3_demo(structure_path, k)
+function p2_e1_e2_e3_demo(structure_path, k, output_img_name)
         close all;
         clc;
         seq = dlmread(structure_path);
@@ -20,7 +20,12 @@ function p2_e1_e2_e3_demo(structure_path, k)
             
             fig = draw_circle_graph_with_components(g, comp, largest);
             
-            saveas(fig, sprintf('p2_e1_e2_e3_demo(%s, %d).png', structure_path, k)); 
+            if ~exist('output_img_name', 'var')
+                saveas(fig, sprintf('p2_e1_e2_e3_demo(%s, %d).png', structure_path, k));
+            else
+                saveas(fig, output_img_name);
+            end
+            
         else
             disp('Ciąg');
             fprintf('%d ', seq(1, 1:size(seq, 2)));

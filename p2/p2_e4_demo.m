@@ -1,6 +1,6 @@
 %%% n - ilość wierzchołków podana jako argument
 
-function p2_e4_demo(n)
+function p2_e4_demo(n, output_img_name)
     close all;
     n = str2double(n);
 
@@ -11,7 +11,11 @@ function p2_e4_demo(n)
         
         fig = draw_circle_graph(g);
 
-        saveas(fig, sprintf('p2_e4_demo(%d).png', n)); 
+        if ~exist('output_img_name', 'var')
+            saveas(fig, sprintf('p2_e4_demo(%d).png', n));
+        else
+            saveas(fig, output_img_name);
+        end
 
         cycle = get_eulerian_cycle(g);
         [~, size_cycle] = size(cycle);

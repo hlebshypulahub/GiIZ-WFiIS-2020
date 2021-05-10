@@ -1,4 +1,4 @@
-function p3_demo(nodes, edges, start)
+function p3_demo(nodes, edges, start, output_img_name)
     close all;
     clc;
     nodes = str2num(nodes);
@@ -58,12 +58,17 @@ function p3_demo(nodes, edges, start)
     
     fprintf('\n\nCenter minimax:');
     disp(cm);
-    fprintf('Distance:\t%d\n',minimax_distance);
+    fprintf('Distance:\t%d\n', minimax_distance);
     
     %%% minimalne drzewo rozpinające
     %%% algorytm prima
     tree_g = prim(g);
     
     fig = draw_weighted_graph_tree(g, tree_g);
-    saveas(fig, sprintf('p3_demo(%d, %d, %d).png', nodes, edges, start));
+    
+    if ~exist('output_img_name', 'var')
+        saveas(fig, sprintf('p3_demo(%d, %d, %d).png', nodes, edges, start));
+    else
+        saveas(fig, output_img_name);
+    end
 end
