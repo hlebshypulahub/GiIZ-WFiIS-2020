@@ -1,0 +1,15 @@
+function p4_demo (n, p, output_img_name)
+close all;
+
+g = build_random_digraph(str2num(n), str2num(p));
+    
+fig = draw_directed_graph(g);
+
+if ~exist('output_img_name', 'var')
+                saveas(fig, sprintf('p4_demo (n, p, output_img_name).png', structure_path, k));
+            else
+                saveas(fig, output_img_name);
+            end
+
+
+end
