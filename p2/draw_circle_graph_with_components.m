@@ -20,7 +20,7 @@ function fig = draw_circle_graph_with_components(g, comp, largest)
     yp=sin(ang);
     plot(xp, yp, 'LineStyle', ':', 'Color', [150 150 150]/255);
     hold on;
-    
+
     %%% Graf
     h = plot(g, 'XData', x, 'YData', y, 'LineWidth', 3,...
     'EdgeColor', 'k', 'MarkerSize', 20,...

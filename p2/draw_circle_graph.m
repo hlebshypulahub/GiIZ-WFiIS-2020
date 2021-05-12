@@ -19,7 +19,7 @@ function fig = draw_circle_graph(g)
     yp=sin(ang);
     plot(xp, yp, 'LineStyle', ':', 'Color', [17 17 17]/255);
     hold on;
-    
+
     h = plot(g, 'XData', x, 'YData', y, 'LineWidth', 2,...
     'EdgeColor', [0 0 0], 'MarkerSize', 20,...
     'NodeColor', [187 187 255]/255, 'NodeFontSize', 16);
