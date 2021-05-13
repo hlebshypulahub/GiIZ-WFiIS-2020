@@ -35,6 +35,8 @@ end
 %%% Usuwam powtarzające się krawędzie
 edges = unique(edges, 'rows');
 
+%%% Liczę maksymalną ilość krawędzi możliwych na tym grafie zgodnie z
+%%% regułami flow network.
 max_edges = length(layer_nodes{2}) + length(layer_nodes{N+1});
 for i = 2:N
     max_edges = max_edges + length(layer_nodes{i}) - 1;
@@ -45,31 +47,40 @@ max_edges = max_edges + length(layer_nodes{N+1}) - 1;
 %%% Dodaję 2N losowych krawędzi
 loops = 0;
 while loops < 2*N && size(edges, 1) < max_edges
-%     if size(edges, 1) == max_edges
-%         break;
-%     end
     
+    %%% Losuję warstwę pośrednią
     random_layer = randi([2, N+1]);
+    %%% Losuję wierzchołek u z wylosowanej warstwy
     u = layer_nodes{random_layer}(randperm(length(layer_nodes{random_layer}), 1));
 
     if random_layer == 2
+        %%% Wtedy do dyzpozycji mamy wierzchołki warstwy 2 i 3.
+        %%% Nie możemy losować krawędzie dla źródła
         temp_nodes = [layer_nodes{2} layer_nodes{3}];
     elseif random_layer == N+1
+        %%% Wtedy do dyzpozycji mamy wierzchołki warstwy przedostatniej i przedprzed.
+        %%% Nie możemy losować krawędzie dla ujścia
         temp_nodes = [layer_nodes{N} layer_nodes{N+1}];
     else
+        %%% Wtedy do dyzpozycji mamy wierzchołki warstwy wylosowanej i 2
+        %%% bezpośrednich sąsiednich warstw
         temp_nodes = [layer_nodes{random_layer-1} layer_nodes{random_layer} layer_nodes{random_layer+1}];
     end
 
+    %%% Losuję wierzchołek v z dostępnych
     v = temp_nodes(randperm(length(temp_nodes), 1));
 
     if u == v
         continue;
     end
     
+    %%% Jeśli wierzchołek u i v są z jednej warstwy, ale nie są
+    %%% bezpośrednimi sąsiadami
     if ismember(v, layer_nodes{random_layer}) && abs(u - v) ~= 1
         continue;
     end
     
+    %%% Jeśli krawędź u->v lub v->u nie istnieje
     if ~ismember([u v], edges, 'rows') && ~ismember([v u], edges, 'rows')
         edges = [edges; u v];
         loops = loops + 1;
