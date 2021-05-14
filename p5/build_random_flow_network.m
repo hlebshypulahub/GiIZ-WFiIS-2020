@@ -44,7 +44,8 @@ for i = 2:N
 end
 max_edges = max_edges + length(layer_nodes{N+1}) - 1;
 
-%%% Dodaję 2N losowych krawędzi
+%%% Dodaję 2N losowych krawędzi, jeżeli się nie mieszczą,
+%%% to dodaję w zakresie [do max_edges]
 loops = 0;
 while loops < 2*N && size(edges, 1) < max_edges
     
