@@ -12,15 +12,15 @@ d(s) = 0;
 p = null(n, 1);
 
 %relaksancja
-    for i = 1:n-1
-        for j = 1:n
-            if am(i,j)~=0
-                if d(j) > d(i) + am(i, j)
-                    d(j) = d(i) + am(i, j);
-                    p(j) = i;
+    for i = 1:n
+            for j = 1:n
+                if am(i,j)~=0
+                    if d(j) > d(i) + am(i, j)
+                        d(j) = d(i) + am(i, j);
+                        p(j) = i;
+                    end
                 end
             end
-        end
     end
     
     for i = 1:n
