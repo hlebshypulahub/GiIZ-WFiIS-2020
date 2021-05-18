@@ -7,4 +7,6 @@ N = str2num(N);
 
 fig = draw_flow_network(g, layer_nodes);
 
+ford_fulkerson(g, layer_nodes);
+
 end
