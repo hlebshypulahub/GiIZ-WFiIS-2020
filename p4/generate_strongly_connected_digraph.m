@@ -13,6 +13,6 @@ for i = 0:100
     end
 end
 
-fig = draw_directed_weighted_graph(g);
+%fig = draw_directed_weighted_graph(g);
 
 end
