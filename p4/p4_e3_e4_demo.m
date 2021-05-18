@@ -16,6 +16,8 @@ components = kosaraju(am);
 %%%tutaj generuje i rysuje silnie spójny digraf:
 strong_digraph = generate_strongly_connected_digraph(n,p);
 
-[result, paths ] = bellman_ford(strong_digraph,1)
+[result, paths ] = bellman_ford(strong_digraph,n);
+
+johnson(strong_digraph);
 
 end

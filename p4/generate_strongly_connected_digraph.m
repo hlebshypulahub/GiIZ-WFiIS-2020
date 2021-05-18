@@ -20,13 +20,13 @@ for i = 0:100
         break     
     end
 end
-i
+i;
 %am = full(adjacency(g));
 %comp = kosaraju(am)
 %components
 %strong_comp
 
-fig = draw_directed_weighted_graph(g);
+% fig = draw_directed_weighted_graph(g);
         
 %disp('Nie udało się zbudować grafu')
 
