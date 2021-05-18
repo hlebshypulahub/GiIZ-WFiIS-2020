@@ -4,15 +4,11 @@ function comp = kosaraju(am)
 comp = repmat(-1,1,n);
 d=repmat(-1,1,n);
 f=repmat(-1,1,n);
-%vp = 1; 
 t=0;
 
     for i = 1:n  
         if d(i)==-1
-             d(i) = 1;        %%oznaczamy wierzchołek jako odwiedzony i wstawiamy na stos
-             %stack(end+1) = i;
-             %vp = i;
-             %disp(vp)
+             d(i) = 1;        
              DFS_visit(i); 
         end
     end
@@ -34,19 +30,13 @@ t=0;
             
         end
 comp;
-
-
     function DFS_visit(i)
         t = t+1;
         d(i) = t;
         
         for j = 1:n
             if am(i, j)==1
-                %disp('fff');
-                j;
                 if d(j) == -1
-                    %disp('dfs_visit_demand_done');
-                    j;
                     DFS_visit(j)
                 end
             end

@@ -15,19 +15,12 @@ AL_print(al);
 im = AM_to_IM(am);
 IM_print(im);
 
-%fig = draw_directed_weighted_graph(g);
+fig = draw_directed_weighted_graph(g);
 
 % if ~exist('output_img_name', 'var')
 %     saveas(fig, sprintf('p4_demo(%d, %d).png', n, p));
 % else
 %     saveas(fig, output_img_name);
 % end
-mam = full(adjacency(g));
-components = kosaraju(mam);
 
-strong_digraph = generate_strongly_connected_digraph(n,p);
-
-fig2 = draw_directed_weighted_graph(strong_digraph);
-
-disp(bellman_ford(strong_digraph,1));
 end
