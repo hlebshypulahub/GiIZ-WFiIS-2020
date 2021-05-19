@@ -1,4 +1,4 @@
-function p4_demo(n, p, output_img_name)
+function p4_e1_demo(n, p, output_img_name)
 close all;
 
 n = str2num(n);
@@ -16,11 +16,10 @@ im = AM_to_IM(am);
 IM_print(im);
 
 fig = draw_directed_weighted_graph(g);
-
-% if ~exist('output_img_name', 'var')
-%     saveas(fig, sprintf('p4_demo(%d, %d).png', n, p));
-% else
-%     saveas(fig, output_img_name);
-% end
+if ~exist('output_img_name', 'var')
+    saveas(fig, sprintf('p4_demo(%d, %d).png', n, p));
+else
+    saveas(fig, output_img_name);
+end
 
 end
