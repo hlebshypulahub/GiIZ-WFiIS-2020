@@ -19,18 +19,32 @@ p = null(n, 1);
 not_ready = 1:1:n;
 
 %%% Iterujemy do momentu gdy w nie przejdziemy wszystkie wierzchołki
-while size(not_ready, 1) ~= 0
-    
-    u = not_ready(0);
+c = 0;
+while size(not_ready, 2) ~= 0
+    if c > 10
+        break;
+    end
+    1
+    not_ready
+    X = size(not_ready, 2)
+
+    u = not_ready(1);
     
     for i = not_ready
         if d(i) < d(u)
             u = i;
         end
     end
-    not_ready = not_ready(not_ready==u);
     
-    for v = not_rady
+    for i = 1:size(not_ready, 2)
+        2
+        if not_ready(i) == u
+            not_ready(i) = [];
+            break;
+        end
+    end
+    
+    for v = not_ready
         if am(u, v) == 1
             if d(v) > d(u) + am_w(u, v)
                 d(v) = d(u) + am_w(u, v);
@@ -38,5 +52,7 @@ while size(not_ready, 1) ~= 0
             end
         end
     end
+    3
+    c = c + 1;
 end
 end
