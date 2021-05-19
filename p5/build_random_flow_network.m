@@ -88,8 +88,6 @@ while loops < 2*N && size(edges, 1) < max_edges
     end
 end
 
-layers_print(layer_nodes);
-
 g = digraph(edges(:, 1), edges(:, 2), ones(1, size(edges, 1)));
 g = set_weights(g, 1, 10);
 end

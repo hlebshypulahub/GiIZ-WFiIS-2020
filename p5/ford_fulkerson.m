@@ -1,8 +1,8 @@
-function ford_fulkerson(g, layer_nodes)
+function ford_fulkerson(g)
 
 %%pobieramy macierz sąsiedztwa z wagami:
 am = full(adjacency(g, 'weighted')); %%przepustowości sieci wyjściowej
-[n,m]=size(am);
+[n, ~]=size(am);
 %%wyzerowanie przepływów
 f = zeros(n);
 
@@ -26,7 +26,7 @@ res_g = digraph(res_am);
 %sprawdzamy ilość wierzchołków w sieci
 [n, ~] = size(g.Nodes);
 %pierwsze poszukiwanie ścieżki s - t
-[p, path] = bfs(res_g,1,n);
+[p, ~] = bfs(res_g,1,n);
 
 while  p     %warunek  przesukiwania wszerz w sieci rezudualnej - dopóki istnieje ścieżka s-t% 
     [p, path] = bfs(res_g,1,n);
@@ -43,7 +43,7 @@ while  p     %warunek  przesukiwania wszerz w sieci rezudualnej - dopóki istnie
     end
     
     for i = 1:size(path2,2)-1
-        if am(path2(i), path2(i+1)) ~=0; %%jeśli ścieżka należy do grafu G
+        if am(path2(i), path2(i+1)) ~=0 %%jeśli ścieżka należy do grafu G
             f(path2(i), path2(i+1)) = f(path2(i), path2(i+1)) + res_am(path2(i+1), path2(i));
         else
             f(path2(i+1),path2(i)) = f(path2(i+1),path2(i)) - res_am(path2(i), path2(i+1));
@@ -60,5 +60,5 @@ while  p     %warunek  przesukiwania wszerz w sieci rezudualnej - dopóki istnie
 end
 
 max_flow = sum(f(1,:));
-sprintf('Wartość maksymalnego przepływu: %d', max_flow)
+fprintf(sprintf('\nWartość maksymalnego przepływu: %d\n\n', max_flow));
 end
