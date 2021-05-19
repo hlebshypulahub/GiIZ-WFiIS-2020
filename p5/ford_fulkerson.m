@@ -1,13 +1,13 @@
 function ford_fulkerson(g, layer_nodes)
 
 %%pobieramy macierz sąsiedztwa z wagami:
-am = full(adjacency(g, 'weighted'));
+am = full(adjacency(g, 'weighted')); %%przepustowości sieci wyjściowej
 [n,m]=size(am);
 %%wyzerowanie przepływów
 f = zeros(n);
 
 %%tworzymy sieć rezydualną (jej macierz sąsiedztwa):
-res_am = zeros(n);
+res_am = zeros(n);      %%przepustowości rezydualne
 %%ustalamy jej strukturę według wzoru:
 for i = 1:n
     for j = 1:n
@@ -31,27 +31,30 @@ p=true;
 
 while  p     %warunek  przesukiwania wszerz w sieci rezudualnej - dopóki istnieje ścieżka s-t% 
     [p, path] = bfs(res_g,1,sum);
-    path2 = [ 1 path(1:end) sum];
+    path2 = [ 1 path(1:end) sum]
     c_f = [];
     for i = 1:size(path2,2)-1
         c_f(end+1) = res_am(path2(i), path2(i+1)); %%zbieram wagi połączeń na ścieżce
     end
+    c_f
     minimum = min(c_f); %%wybieram minimalną wagę
     for i = 1:size(path2,2)-1
         res_am(path2(i), path2(i+1)) = minimum; %%ustawiam tą minimalna wagę na ścieżce
+        res_am(path2(i+1), path2(i)) =  res_am(path2(i+1), path2(i)) - minimum;
     end
     
     for i = 1:size(path2,2)-1
         if am(path2(i), path2(i+1)) ~=0; %%jeśli ścieżka należy do grafu G
             f(i,j) = f(i,j) + res_am(path2(i), path2(i+1));
         else
-            f(i,j) = f(i,j) - res_am(path2(i), path2(i+1));
+            f(j,i) = f(j,i) - res_am(path2(i), path2(i+1));
         end
     end
     res_g = digraph(res_am);
 end
-
-
-max_flow = max(f(:));
-sprintf('Wartość maksymalnego przepływu: %d', max_flow)
+f
+%f(:,1)
+%f(1,:)
+%sum(f(1,:));
+%sprintf('Wartość maksymalnego przepływu: %d', max_flow)
 end
