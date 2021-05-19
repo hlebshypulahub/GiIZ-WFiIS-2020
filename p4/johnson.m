@@ -44,7 +44,7 @@ function D = johnson(graph)
 
         h
         for u=1:n
-            d_dijks = Dijkstra(graph,u,0)
+            d_dijks = Dijkstra(graph,u)
             for v=1:n
                 D(u,v) = d_dijks(v) - h(u)+h(v);
             end
