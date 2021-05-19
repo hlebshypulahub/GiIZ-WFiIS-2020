@@ -27,8 +27,8 @@ while ~isequal(size(Q,2),0)
 end
 
 path = [];
-result = false;
-
+result = true;
+d(t)
 if d(t)==Inf
    result = false;
 else

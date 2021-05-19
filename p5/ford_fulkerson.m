@@ -22,39 +22,43 @@ for i = 1:n
 end
 
 res_g = digraph(res_am);
-%figure
-%fig = draw_flow_network(res_g, layer_nodes);
 
 %sprawdzamy ilość wierzchołków w sieci
-[sum, ~] = size(g.Nodes);
-p=true;
+[n, ~] = size(g.Nodes);
+%pierwsze poszukiwanie ścieżki s - t
+[p, path] = bfs(res_g,1,n);
 
 while  p     %warunek  przesukiwania wszerz w sieci rezudualnej - dopóki istnieje ścieżka s-t% 
-    [p, path] = bfs(res_g,1,sum);
-    path2 = [ 1 path(1:end) sum]
+    [p, path] = bfs(res_g,1,n);
+    path2 = [ 1 path(1:end) n]
     c_f = [];
     for i = 1:size(path2,2)-1
         c_f(end+1) = res_am(path2(i), path2(i+1)); %%zbieram wagi połączeń na ścieżce
     end
     c_f
-    minimum = min(c_f); %%wybieram minimalną wagę
+    minimum = min(c_f) %%wybieram minimalną wagę
     for i = 1:size(path2,2)-1
-        res_am(path2(i), path2(i+1)) = minimum; %%ustawiam tą minimalna wagę na ścieżce
-        res_am(path2(i+1), path2(i)) =  res_am(path2(i+1), path2(i)) - minimum;
+        res_am(path2(i), path2(i+1)) = res_am(path2(i), path2(i+1)) - minimum; %%ustawiam tą minimalna wagę na ścieżce
+        res_am(path2(i+1), path2(i)) =   minimum;
     end
     
     for i = 1:size(path2,2)-1
         if am(path2(i), path2(i+1)) ~=0; %%jeśli ścieżka należy do grafu G
-            f(i,j) = f(i,j) + res_am(path2(i), path2(i+1));
+            f(path2(i), path2(i+1)) = f(path2(i), path2(i+1)) + res_am(path2(i+1), path2(i));
         else
-            f(j,i) = f(j,i) - res_am(path2(i), path2(i+1));
+            f(path2(i+1),path2(i)) = f(path2(i+1),path2(i)) - res_am(path2(i), path2(i+1));
         end
     end
     res_g = digraph(res_am);
+    %%jeśli to odkomentujecie to widać jak się zmienia sieć rezydualna i
+    %%flow
+    %fg=digraph(f);
+    %figure
+    %fig = draw_flow_network(res_g, layer_nodes);  
+    %figure
+    %fig = draw_flow_network(fg, layer_nodes);   
 end
 f
-%f(:,1)
-%f(1,:)
-%sum(f(1,:));
-%sprintf('Wartość maksymalnego przepływu: %d', max_flow)
+max_flow = sum(f(1,:));
+sprintf('Wartość maksymalnego przepływu: %d', max_flow)
 end
