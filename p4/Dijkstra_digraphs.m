@@ -22,7 +22,7 @@ not_ready = 1:1:n;
 c = 0;
 while size(not_ready, 2) ~= 0
 
-    X = size(not_ready, 2);
+    
     u = not_ready(1);
     
     for i = not_ready
