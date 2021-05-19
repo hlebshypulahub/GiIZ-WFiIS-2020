@@ -21,12 +21,8 @@ not_ready = 1:1:n;
 %%% Iterujemy do momentu gdy w nie przejdziemy wszystkie wierzchołki
 c = 0;
 while size(not_ready, 2) ~= 0
-    if c > 10
-        break;
-    end
-    
-    X = size(not_ready, 2);
 
+    X = size(not_ready, 2);
     u = not_ready(1);
     
     for i = not_ready
@@ -52,6 +48,6 @@ while size(not_ready, 2) ~= 0
         end
     end
     
-    c = c + 1;
+
 end
 end
