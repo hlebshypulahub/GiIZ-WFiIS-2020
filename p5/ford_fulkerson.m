@@ -30,13 +30,13 @@ res_g = digraph(res_am);
 
 while  p     %warunek  przesukiwania wszerz w sieci rezudualnej - dopóki istnieje ścieżka s-t% 
     [p, path] = bfs(res_g,1,n);
-    path2 = [ 1 path(1:end) n]
+    path2 = [ 1 path(1:end) n];
     c_f = [];
     for i = 1:size(path2,2)-1
         c_f(end+1) = res_am(path2(i), path2(i+1)); %%zbieram wagi połączeń na ścieżce
     end
-    c_f
-    minimum = min(c_f) %%wybieram minimalną wagę
+    
+    minimum = min(c_f); %%wybieram minimalną wagę
     for i = 1:size(path2,2)-1
         res_am(path2(i), path2(i+1)) = res_am(path2(i), path2(i+1)) - minimum; %%ustawiam tą minimalna wagę na ścieżce
         res_am(path2(i+1), path2(i)) =   minimum;
@@ -58,7 +58,7 @@ while  p     %warunek  przesukiwania wszerz w sieci rezudualnej - dopóki istnie
     %figure
     %fig = draw_flow_network(fg, layer_nodes);   
 end
-f
+
 max_flow = sum(f(1,:));
 sprintf('Wartość maksymalnego przepływu: %d', max_flow)
 end

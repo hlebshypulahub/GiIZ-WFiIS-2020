@@ -28,7 +28,7 @@ end
 
 path = [];
 result = true;
-d(t)
+
 if d(t)==Inf
    result = false;
 else
