@@ -18,6 +18,4 @@ strong_digraph = generate_strongly_connected_digraph(n,p);
 
 [result, paths ] = bellman_ford(strong_digraph,n,0);
 
-johnson(strong_digraph);
-
 end

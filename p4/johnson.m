@@ -1,5 +1,8 @@
 function D = johnson(graph)
         new_graph = add_s(graph);
+        
+        draw_directed_weighted_graph(graph);
+        figure;
         draw_directed_weighted_graph(new_graph);
         
         [new_n,~] = size(new_graph.Nodes);
@@ -38,18 +41,18 @@ function D = johnson(graph)
         for i=1:size_edges
             graph.Edges.Weight(i) = new_graph.Edges.Weight(i);
         end
-        
-%         draw_directed_weighted_graph(graph);
+        figure;
+        draw_directed_weighted_graph(graph);
         D = zeros(n,n);
 
-        h
+        
         for u=1:n
-            d_dijks = Dijkstra_digraphs(graph,u)
+            d_dijks = Dijkstra_digraphs(graph,u);
             for v=1:n
                 D(u,v) = d_dijks(v) - h(u)+h(v);
             end
         end
-        D
+        
 end
 
 %%% wierzchołek o największym numerze to wierzchołek S

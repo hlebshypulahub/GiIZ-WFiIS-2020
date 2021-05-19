@@ -24,9 +24,8 @@ while size(not_ready, 2) ~= 0
     if c > 10
         break;
     end
-    1
-    not_ready
-    X = size(not_ready, 2)
+    
+    X = size(not_ready, 2);
 
     u = not_ready(1);
     
@@ -37,7 +36,7 @@ while size(not_ready, 2) ~= 0
     end
     
     for i = 1:size(not_ready, 2)
-        2
+        
         if not_ready(i) == u
             not_ready(i) = [];
             break;
@@ -52,7 +51,7 @@ while size(not_ready, 2) ~= 0
             end
         end
     end
-    3
+    
     c = c + 1;
 end
 end
