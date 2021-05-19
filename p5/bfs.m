@@ -1,5 +1,5 @@
-function result = bfs(g,s,t)
-%%bfs działa ok dla prawidłowego grafu
+function [result , path] = bfs(g,s,t)
+%%inicjujemy zmienne
 d = Inf(t, 1);
 d(s) = 0;
 p = null(t, 1);
@@ -8,7 +8,6 @@ am = full(adjacency(g, 'weighted'));
 
 Q = []; %kolejka Q
 Q(end+1) = s; %wstawiam s na początek
-%komentarz bo pętla na razie nie dokończona, żeby wrakunek był prawdziwy
 
 while ~isequal(size(Q,2),0)
     v = Q(end);
@@ -27,11 +26,16 @@ while ~isequal(size(Q,2),0)
     end
 end
 
+path = [];
+result = false;
 
-result = []
-while ~(p(t)==s)
-    result(end+1) = p(t)
-    t=p(t)
+if d(t)==Inf
+   result = false;
+else
+    while ~(p(t)==s)
+        path(end+1) = p(t);
+        t=p(t);
+    end
 end
-result = flip(result)
+path = flip(path);
 end
