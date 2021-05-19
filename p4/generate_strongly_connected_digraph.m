@@ -5,7 +5,7 @@ components =repmat(0,1,n);
 
 for i = 0:100
     g = build_random_digraph(n, p);
-    g = set_weights(g, 1, 10);
+    g = set_weights(g, -5, 10);
     am = full(adjacency(g));
     components = kosaraju(am);
     if isequal(components,strong_comp)

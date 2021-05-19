@@ -1,9 +1,9 @@
 function [result, d] = bellmann_ford(g, s, h)
 
 %%% Bierzemy macierz sąsiedztwa
-am = full(adjacency(g))
+am = full(adjacency(g));
 %%oraz wagi
-w = full(adjacency(g, 'weighted'))
+w = full(adjacency(g, 'weighted'));
 
 %%% Ilość wierzchołków
 n = size(am, 1);

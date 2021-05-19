@@ -1,50 +1,55 @@
-function johnson(graph)
+function D = johnson(graph)
         new_graph = add_s(graph);
         draw_directed_weighted_graph(new_graph);
         
-        [n,~] = size(new_graph.Nodes);
-     
+        [new_n,~] = size(new_graph.Nodes);
+        [n,~] = size(graph.Nodes);
+        
         %%% przekazuję ostatni wierzchołek(s)
-        [result, d] = bellman_ford(new_graph, n,n);
+        [result, d] = bellman_ford(new_graph, new_n,new_n);
         
         if result == 0
             error('Istnieje cykl o ujemnej sumie wag');
         end
-        
         %%% dzięki algorytmowi Bellmana-Forda uzyskujemy tablicę długości 
         %%% najkrótszych ścieżek od wierzchołka s: d
 
-%         d
-        
-        h=zeros(n,1);
-        for v=1:n
+        %%% Długości d dla każdego wierzchołka zachowujemy w tablicy h, która posłuży do przeskalowania
+        %%% wag krawędzi grafu G w taki sposób, żeby były nieujemne
+        h=zeros(new_n,1);
+        for v=1:new_n
             h(v) = d(v);
         end
-%         h
 
-        [size_edges,~] = size(new_graph.Edges);
+        [size_edges_new_graph,~] = size(new_graph.Edges);
+        [size_edges,~] = size(graph.Edges);
 
-        for i=1:size_edges
-%             new_graph.Edges.Weight(i) = 
+        %%% dla każdej krawędzi (u, v)
+        %%% obliczamy nową wagę:
+        for i=1:size_edges_new_graph
+            [s,t] = findedge(new_graph,i);
+            w = new_graph.Edges.Weight(i);
+            new_graph.Edges.Weight(i) = w+h(s)-h(t);
         end
-%         for edge in new_graph.get_edges():
-%             nodes = edge.get_nodes_ids()
-%             u = nodes[0].get_id()
-%             v = nodes[1].get_id()
-%             w = edge.get_weight()
-%             edge.set_weight(w + h[u] - h[v])
-% 
-%         cls.copy_weights(new_graph, graph)
-% 
-%         D = [[0 for x in range(len(graph.get_nodes()))] for y in range(len(graph.get_nodes()))]
-%         old_nodes = [i.get_id() for i in graph.get_nodes()]
-%         for u in old_nodes:
-%             for v in old_nodes:
-%                 dist, path = cls.dijkstra_directed(graph, u, v)
-%                 D[u][v] = dist - h[u] + h[v]
-%      
 
+        
+        %%% przepisanie nowych wag z grafu G' do grafu G (bez wierzchołka
+        %%% S)
+        for i=1:size_edges
+            graph.Edges.Weight(i) = new_graph.Edges.Weight(i);
+        end
+        
+%         draw_directed_weighted_graph(graph);
+        D = zeros(n,n);
 
+        h
+        for u=1:n
+            d_dijks = Dijkstra(graph,u,0)
+            for v=1:n
+                D(u,v) = d_dijks(v) - h(u)+h(v);
+            end
+        end
+        D
 end
 
 %%% wierzchołek o największym numerze to wierzchołek S
