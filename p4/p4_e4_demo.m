@@ -25,8 +25,8 @@ if ~exist('output_img_name', 'var')
     saveas(fig2, sprintf('p4_e4_demo(%d, %d)_graph_with_positive_edges.png', n, p));
     saveas(fig3, sprintf('p4_e4_demo(%d, %d)_digraph_with_node_S.png', n, p));
 else
-    saveas(fig1, strcat('strong_digraph_', output_img_name));
-    saveas(fig2, strcat('graph_with_positive_edges_', output_img_name));
-    saveas(fig3, strcat('digraph_with_node_S_', output_img_name));
+    saveas(fig1, strcat(output_img_name, '_strong_digraph.png'));
+    saveas(fig2, strcat(output_img_name, '_graph_with_positive_edges.png'));
+    saveas(fig3, strcat(output_img_name, '_digraph_with_node_S.png'));
 end
 end
