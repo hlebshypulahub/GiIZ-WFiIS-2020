@@ -1,4 +1,4 @@
-function ford_fulkerson(g)
+function max_flow = ford_fulkerson(g)
 
 %%pobieramy macierz sąsiedztwa z wagami:
 am = full(adjacency(g, 'weighted')); %%przepustowości sieci wyjściowej
@@ -60,5 +60,5 @@ while  p     %warunek  przesukiwania wszerz w sieci rezudualnej - dopóki istnie
 end
 
 max_flow = sum(f(1,:));
-fprintf(sprintf('\nWartość maksymalnego przepływu: %d\n\n', max_flow));
+
 end

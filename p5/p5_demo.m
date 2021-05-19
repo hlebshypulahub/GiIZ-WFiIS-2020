@@ -12,6 +12,8 @@ else
     saveas(fig, output_img_name);
 end
 
-ford_fulkerson(g);
+max_flow = ford_fulkerson(g);
+
+fprintf(sprintf('\nWartość maksymalnego przepływu: %d\n\n', max_flow));
 
 end
