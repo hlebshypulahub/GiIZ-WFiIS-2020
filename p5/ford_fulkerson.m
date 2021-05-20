@@ -1,4 +1,4 @@
-function max_flow = ford_fulkerson(g)
+function [f, max_flow] = ford_fulkerson(g)
 
 %%pobieramy macierz sąsiedztwa z wagami:
 am = full(adjacency(g, 'weighted')); %%przepustowości sieci wyjściowej
@@ -50,8 +50,7 @@ while  p     %warunek  przesukiwania wszerz w sieci rezudualnej - dopóki istnie
         end
     end
     res_g = digraph(res_am);
-    %%jeśli to odkomentujecie to widać jak się zmienia sieć rezydualna i
-    %%flow
+    %%jeśli to odkomentować to widać jak się zmienia sieć rezydualna i flow
     %fg=digraph(f);
     %figure
     %fig = draw_flow_network(res_g, layer_nodes);  

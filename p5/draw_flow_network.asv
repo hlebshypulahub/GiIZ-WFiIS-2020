@@ -4,8 +4,6 @@ function fig = draw_flow_network(g, f, layer_nodes)
         g_temp.Edges.Weight(i) = f(g.Edges.EndNodes(i, 1), g.Edges.EndNodes(i, 2));
     end
     
-    g_zero = digraph(f);
-    
     [n, ~] = size(g.Nodes);
     
     xdata = [];
@@ -24,22 +22,22 @@ function fig = draw_flow_network(g, f, layer_nodes)
     ydata(end+1) = 0.5;
 
     h = plot(g, 'YData', ydata, 'XData', xdata,...
-    'LineWidth', 1, 'ArrowSize', 15,...
+    'LineWidth', 2, 'ArrowSize', 15,...
     'EdgeColor', [0 0 0], 'MarkerSize', 30,...
-    'NodeColor', [255 255 150]/255, 'ArrowSize', 25);
+    'NodeColor', [255 150 255]/255);
     hold on;
     
     for i = 1:n
         plot(h.XData(i),h.YData(i), 'o', 'MarkerEdgeColor', 'k', 'MarkerSize', 30)
     end
     
+    label_text = [];
     for i = 1:size(g.Edges, 1)
-        labeledge(h, g.Edges.EndNodes(i, 1), g.Edges.EndNodes(i, 2), sprintf('%d/%d', g_temp.Edges.Weight(i), g.Edges.Weight(i)));
+        label_text = [label_text g_temp.Edges.Weight
     end
+    labeledge(h, g.Edges.EndNodes(:, 1), g.Edges.EndNodes(:, 2), g_temp.Edges.Weight);
     
-    highlight(h, g_zero, 'EdgeColor', 'b', 'LineWidth', 5);
-    
-    h.EdgeFontSize=15;
+    h.EdgeFontSize=14;
         
     text(h.XData, h.YData, h.NodeLabel,...
     'VerticalAlignment','Middle',...
