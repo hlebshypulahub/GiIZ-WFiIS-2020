@@ -39,6 +39,7 @@ figure;
 [fig2, ~, ~] = draw_directed_weighted_graph(graph, x_data, y_data);
 figure;
 [fig3, ~, ~] = draw_directed_weighted_graph(new_graph, x_data, y_data);
+figure;
 if ~exist('output_img_name', 'var')
     saveas(fig1, sprintf('p4_e4_demo(%d, %d)_strong_digraph.png', n, p));
     saveas(fig2, sprintf('p4_e4_demo(%d, %d)_digraph_with_positive_edges.png', n, p));

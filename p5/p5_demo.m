@@ -1,4 +1,4 @@
-function p5_demo(N)
+function p5_demo(N, output_img_name)
 close all;
 
 N = str2num(N);
