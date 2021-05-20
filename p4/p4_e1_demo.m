@@ -15,9 +15,9 @@ AL_print(al);
 im = AM_to_IM(am);
 IM_print(im);
 
-fig = draw_directed_weighted_graph(g);
+fig = draw_directed_weighted_graph_layered_layout(g);
 if ~exist('output_img_name', 'var')
-    saveas(fig, sprintf('p4_demo(%d, %d)', n, p));
+    saveas(fig, sprintf('p4_demo(%d, %d).png', n, p));
 else
     saveas(fig, output_img_name);
 end

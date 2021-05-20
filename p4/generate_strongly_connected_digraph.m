@@ -1,7 +1,7 @@
 function g = generate_strongly_connected_digraph(n,p)
 
-strong_comp = repmat(1,1,n);
-components =repmat(0,1,n);
+strong_comp = ones(1,n);
+components = zeros(1,n);
 
 for i = 0:1000
     g = build_random_digraph(n, p);
@@ -16,7 +16,5 @@ end
 if ~isequal(components,strong_comp)
      error('Nie udało się stworzyć silnie spójnego grafu skierowanego')
 end
-
-fig = draw_directed_weighted_graph(g);
 
 end

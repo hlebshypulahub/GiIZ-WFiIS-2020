@@ -1,4 +1,4 @@
-function [result, d] = bellmann_ford(g, s, h)
+function [result, d] = bellman_ford(g, s, ~)
 
 %%% Bierzemy macierz sąsiedztwa
 am = full(adjacency(g));
