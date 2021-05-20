@@ -34,19 +34,30 @@ strong_digraph = generate_strongly_connected_digraph(n, p);
 [graph, new_graph, D] = johnson(strong_digraph);
 D_print(D);
 
-[fig1, x_data, y_data] = draw_directed_weighted_graph(strong_digraph);
-figure;
-[fig2, ~, ~] = draw_directed_weighted_graph(graph, x_data, y_data);
-figure;
-[fig3, ~, ~] = draw_directed_weighted_graph(new_graph, x_data, y_data);
-figure;
+% [fig1, x_data, y_data] = draw_directed_weighted_graph(strong_digraph);
+% figure;
+% [fig2, ~, ~] = draw_directed_weighted_graph(graph, x_data, y_data);
+% figure;
+% [fig3, ~, ~] = draw_directed_weighted_graph(new_graph, x_data, y_data);
+% figure;
 if ~exist('output_img_name', 'var')
+    [fig1, x_data, y_data] = draw_directed_weighted_graph(strong_digraph);
+figure;
     saveas(fig1, sprintf('p4_e4_demo(%d, %d)_strong_digraph.png', n, p));
+    [fig2, ~, ~] = draw_directed_weighted_graph(graph, x_data, y_data);
+figure;
     saveas(fig2, sprintf('p4_e4_demo(%d, %d)_digraph_with_positive_edges.png', n, p));
+    [fig3, ~, ~] = draw_directed_weighted_graph(new_graph, x_data, y_data);
+figure;
     saveas(fig3, sprintf('p4_e4_demo(%d, %d)_digraph_with_node_S.png', n, p));
 else
+    [fig1, x_data, y_data] = draw_directed_weighted_graph(strong_digraph);
+figure;
     saveas(fig1, strcat(output_img_name, '_strong_digraph.png'));
+        [fig2, ~, ~] = draw_directed_weighted_graph(graph, x_data, y_data);
+figure;
     saveas(fig2, strcat(output_img_name, '_digraph_with_positive_edges.png'));
+    [fig3, ~, ~] = draw_directed_weighted_graph(new_graph, x_data, y_data);
     saveas(fig3, strcat(output_img_name, '_digraph_with_node_S.png'));
 end
 end
