@@ -9,4 +9,7 @@ strong_digraph = generate_strongly_connected_digraph(n,p);
 
 [result, paths] = bellman_ford(strong_digraph,n,0);
 
+disp('Najkrótsze scieżki od wierzchołka n');
+paths
+
 end
