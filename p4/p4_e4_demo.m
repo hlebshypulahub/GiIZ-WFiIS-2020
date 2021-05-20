@@ -34,12 +34,6 @@ strong_digraph = generate_strongly_connected_digraph(n, p);
 [graph, new_graph, D] = johnson(strong_digraph);
 D_print(D);
 
-% [fig1, x_data, y_data] = draw_directed_weighted_graph(strong_digraph);
-% figure;
-% [fig2, ~, ~] = draw_directed_weighted_graph(graph, x_data, y_data);
-% figure;
-% [fig3, ~, ~] = draw_directed_weighted_graph(new_graph, x_data, y_data);
-% figure;
 if ~exist('output_img_name', 'var')
     [fig1, x_data, y_data] = draw_directed_weighted_graph(strong_digraph);
 figure;
